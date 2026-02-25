@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroCuiabá Connect — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --card: #FFFFFF;
+    --primary: #2D6A4F;
+    --primary-light: #40916C;
+    --primary-dark: #1B4332;
+    --accent: #D4A843;
+    --accent-light: #E8C868;
+    --text: #1A1A1A;
+    --text-sec: #6B7280;
+    --text-light: #9CA3AF;
+    --border: #E8E4DD;
+    --success: #059669;
+    --urgent: #DC2626;
+    --warm-gray: #F0EDE8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #111;
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    opacity: 0.025;
+    background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ====== PAGE HEADER ====== */
+  .page-header {
+    text-align: center;
+    padding: 48px 20px 8px;
+    position: relative;
+    z-index: 2;
+  }
+  .page-header .logo-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .page-header .logo-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 4px 20px rgba(45,106,79,.5);
+  }
+  .page-header h1 {
+    font-size: 32px; font-weight: 800; color: #fff; letter-spacing: -.5px;
+  }
+  .page-header h1 span { color: var(--accent); }
+  .page-header p {
+    color: rgba(255,255,255,.35); font-size: 14px; font-weight: 500;
+    letter-spacing: .3px; margin-top: 2px;
+  }
+
+  /* ====== SECTION LABEL ====== */
+  .section-label {
+    text-align: center;
+    padding: 48px 20px 20px;
+    position: relative;
+    z-index: 2;
+  }
+  .section-label h2 {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: .35;
+    margin-bottom: 6px;
+  }
+  .section-label h3 {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .section-label p {
+    color: rgba(255,255,255,.3);
+    font-size: 13px;
+    margin-top: 6px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+
+  /* ====== PHONE GRID ====== */
+  .phone-grid {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 0 20px 24px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+  }
+  .phone-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .phone-wrap .label {
+    font-size: 12px;
+    color: rgba(255,255,255,.35);
+    font-weight: 600;
+    letter-spacing: .5px;
+  }
+
+  /* ====== PHONE FRAME ====== */
+  .phone {
+    width: 320px;
+    height: 660px;
+    border-radius: 36px;
+    background: #111;
+    padding: 10px 7px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08) inset;
+    position: relative;
+  }
+  .phone .notch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 26px;
+    background: #111;
+    border-radius: 0 0 16px 16px;
+    z-index: 50;
+  }
+  .phone .screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    overflow-y: auto;
+    background: var(--bg);
+    position: relative;
+  }
+  .phone .screen::-webkit-scrollbar { width: 0; }
+
+  /* ====== COMMON UI ELEMENTS ====== */
+  .avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 15px; font-weight: 700;
+    flex-shrink: 0; letter-spacing: .5px;
+  }
+  .avatar.sm { width: 36px; height: 36px; font-size: 13px; }
+  .avatar.lg { width: 50px; height: 50px; font-size: 18px; }
+  .av-green { background: var(--primary); }
+  .av-dark { background: var(--primary-dark); }
+  .av-gold { background: #8B6914; }
+  .av-brown { background: #6B4226; }
+  .av-olive { background: #5B7553; }
+
+  .badge {
+    font-size: 9px; font-weight: 700; padding: 3px 8px;
+    border-radius: 20px; letter-spacing: .4px; white-space: nowrap;
+  }
+  .badge-active { background: #D1FAE5; color: #059669; }
+  .badge-urgent { background: #FEE2E2; color: #DC2626; }
+  .badge-pending { background: #FEF3C7; color: #D97706; }
+  .badge-done { background: #DBEAFE; color: #2563EB; }
+  .badge-premium { background: #FDF6E3; color: #B8860B; }
+
+  .stars { display: inline-flex; gap: 1px; align-items: center; }
+  .stars .s { font-size: 10px; }
+  .stars .s.on { color: var(--accent); }
+  .stars .s.off { color: #DDD; }
+  .stars .num { font-size: 10px; color: var(--text-sec); font-weight: 600; margin-left: 4px; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: #fff; border: none; border-radius: 14px;
+    padding: 15px 20px; font-size: 14px; font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer; width: 100%; text-align: center;
+    box-shadow: 0 8px 24px rgba(45,106,79,.3);
+    transition: transform .2s;
+  }
+  .btn-primary:hover { transform: translateY(-1px); }
+  .btn-primary small { display: block; font-size: 11px; font-weight: 400; opacity: .6; margin-top: 3px; }
+
+  .icon-btn {
+    width: 36px; height: 36px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; cursor: pointer; border: none;
+    background: rgba(255,255,255,.15);
+    transition: background .2s;
+  }
+  .icon-btn:hover { background: rgba(255,255,255,.25); }
+
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 14px;
+    margin-bottom: 10px;
+  }
+
+  /* ====== ANIMATIONS ====== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeRight {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes progressBar {
+    from { width: 0; }
+    to { width: 45%; }
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(45,106,79,.3); }
+    50% { box-shadow: 0 0 0 8px rgba(45,106,79,0); }
+  }
+  .anim-fade-up {
+    animation: fadeUp .6s ease-out both;
+  }
+  .anim-slide-in {
+    animation: slideIn .5s ease-out both;
+  }
+
+  /* ====== BOTTOM NAV ====== */
+  .bottom-nav {
+    position: sticky; bottom: 0;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-around;
+    padding: 8px 0 14px;
+    z-index: 20;
+  }
+  .bottom-nav .nav-item {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    cursor: pointer; opacity: .4; transition: opacity .2s;
+    background: none; border: none; font-family: 'DM Sans', sans-serif;
+  }
+  .bottom-nav .nav-item.active { opacity: 1; }
+  .bottom-nav .nav-item .icon { font-size: 19px; }
+  .bottom-nav .nav-item .text { font-size: 9px; font-weight: 600; color: var(--text-light); }
+  .bottom-nav .nav-item.active .text { color: var(--primary); font-weight: 700; }
+  .bottom-nav .nav-item.active .dot {
+    width: 4px; height: 4px; border-radius: 2px; background: var(--primary); margin-top: -2px;
+  }
+
+  /* ====== DIVIDER ====== */
+  .divider {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+    margin: 16px 0;
+  }
+
+  @media (max-width: 740px) {
+    .phone-grid { gap: 20px; }
+    .phone { width: 300px; height: 620px; }
+  }
+  @media (max-width: 380px) {
+    .phone { width: 280px; height: 580px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================== PAGE HEADER ============================== -->
+<header class="page-header">
+  <div class="logo-row">
+    <div class="logo-icon">🌾</div>
+    <h1>Agro<span>Cuiabá</span> Connect</h1>
+  </div>
+  <p>O técnico certo pra sua fazenda, em minutos.</p>
+</header>
+
+<!-- ======================================================================== -->
+<!-- SECTION 1: HOME + BUSCA                                                   -->
+<!-- ======================================================================== -->
+<div class="section-label">
+  <h2>Seção 01</h2>
+  <h3>Home & Busca de Técnicos</h3>
+  <p>Tela principal do fazendeiro com acesso rápido a categorias, serviços recentes e busca de prestadores por especialidade e localização.</p>
+</div>
+
+<div class="phone-grid">
+
+  <!-- ===== PHONE 1: HOME ===== -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+
+        <!-- Header gradient -->
+        <div style="background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,var(--primary-light) 100%);padding:42px 18px 22px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-30px;right:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.06)"></div>
+          <div style="position:absolute;bottom:-40px;left:-30px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.04)"></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:2;">
+            <div>
+              <p style="color:rgba(255,255,255,.65);font-size:11.5px;font-weight:500;letter-spacing:.3px;">Bom dia, João 👋</p>
+              <h2 style="color:#fff;margin-top:4px;font-size:19px;font-weight:700;">Faz. Santa Clara</h2>
+              <p style="color:rgba(255,255,255,.5);font-size:10.5px;margin-top:2px;">Sorriso - MT • 3.200 ha</p>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <div style="width:34px;height:34px;border-radius:11px;background:rgba(255,255,255,.13);display:flex;align-items:center;justify-content:center;font-size:15px;position:relative;cursor:pointer;">
+                🔔
+                <div style="position:absolute;top:-1px;right:-1px;width:7px;height:7px;border-radius:50%;background:var(--urgent);border:2px solid var(--primary-dark);"></div>
+              </div>
+              <div class="avatar sm av-green">JS</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Urgente -->
+        <div style="padding:0 14px;margin-top:-14px;position:relative;z-index:10;">
+          <div class="anim-fade-up" style="animation-delay:.2s;background:linear-gradient(135deg,var(--accent),var(--accent-light));border-radius:14px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 8px 24px rgba(212,168,67,.3);cursor:pointer;">
+            <div>
+              <p style="font-weight:800;font-size:14px;color:var(--primary-dark);">🚨 Solicitar Serviço Urgente</p>
+              <p style="margin-top:3px;color:rgba(27,67,50,.65);font-size:10.5px;font-weight:500;">Encontre técnicos disponíveis agora</p>
+            </div>
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center;font-size:18px;">→</div>
+          </div>
+        </div>
+
+        <!-- Categorias -->
+        <div style="padding:18px 14px 6px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <h3 style="font-size:14px;font-weight:700;color:var(--text);">Categorias</h3>
+            <span style="font-size:11px;color:var(--primary);font-weight:600;cursor:pointer;">Ver todas →</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+            <div class="anim-slide-in" style="animation-delay:.1s;background:var(--card);border-radius:12px;padding:12px 8px;text-align:center;border:1px solid var(--border);cursor:pointer;">
+              <div style="font-size:24px;margin-bottom:5px;">⚙️</div>
+              <p style="font-size:11px;font-weight:700;color:var(--text);">Mecânica</p>
+              <p style="font-size:9px;color:var(--text-light);margin-top:1px;">48 técnicos</p>
+            </div>
+            <div class="anim-slide-in" style="animation-delay:.2s;background:var(--card);border-radius:12px;padding:12px 8px;text-align:center;border:1px solid var(--border);cursor:pointer;">
+              <div style="font-size:24px;margin-bottom:5px;">💧</div>
+              <p style="font-size:11px;font-weight:700;color:var(--text);">Irrigação</p>
+              <p style="font-size:9px;color:var(--text-light);margin-top:1px;">23 técnicos</p>
+            </div>
+            <div class="anim-slide-in" style="animation-delay:.3s;background:var(--card);border-radius:12px;padding:12px 8px;text-align:center;border:1px solid var(--border);cursor:pointer;">
+              <div style="font-size:24px;margin-bottom:5px;">🔧</div>
+              <p style="font-size:11px;font-weight:700;color:var(--text);">Peças</p>
+              <p style="font-size:9px;color:var(--text-light);margin-top:1px;">156 itens</p>
+            </div>
+            <div class="anim-slide-in" style="animation-delay:.4s;background:var(--card);border-radius:12px;padding:12px 8px;text-align:center;border:1px solid var(--border);cursor:pointer;">
+              <div style="font-size:24px;margin-bottom:5px;">✈️</div>
+              <p style="font-size:11px;font-weight:700;color:var(--text);">Drones</p>
+              <p style="font-size:9px;color:var(--text-light);margin-top:1px;">12 pilotos</p>
+            </div>
+            <div class="anim-slide-in" style="animation-delay:.5s;background:var(--card);border-radius:12px;padding:12px 8px;text-align:center;border:1px solid var(--border);cursor:pointer;">
+              <div style="font-size:24px;margin-bottom:5px;">🌱</div>
+              <p style="font-size:11px;font-weight:700;color:var(--text);">Agrônomo</p>
+              <p style="font-size:9px;color:var(--text-light);margin-top:1px;">31 consult.</p>
+            </div>
+            <div class="anim-slide-in" style="animation-delay:.6s;background:var(--card);border-radius:12px;padding:12px 8px;text-align:center;border:1px solid var(--border);cursor:pointer;">
+              <div style="font-size:24px;margin-bottom:5px;">🔌</div>
+              <p style="font-size:11px;font-weight:700;color:var(--text);">Elétrica</p>
+              <p style="font-size:9px;color:var(--text-light);margin-top:1px;">19 técnicos</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Serviços Recentes -->
+        <div style="padding:10px 14px 16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <h3 style="font-size:14px;font-weight:700;color:var(--text);">Serviços Recentes</h3>
+            <span style="font-size:11px;color:var(--primary);font-weight:600;cursor:pointer;">Histórico →</span>
+          </div>
+
+          <div class="card anim-fade-up" style="animation-delay:.5s;cursor:pointer;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px;">
+              <div style="display:flex;gap:9px;align-items:center;">
+                <div class="avatar sm av-dark">CS</div>
+                <div>
+                  <p style="font-size:12.5px;font-weight:700;color:var(--text);">Carlos Mecânica</p>
+                  <div class="stars"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="num">4.9</span></div>
+                </div>
+              </div>
+              <span class="badge badge-active">ATIVO</span>
+            </div>
+            <p style="font-size:11.5px;color:var(--text-sec);line-height:1.4;">Revisão colheitadeira John Deere S790</p>
+            <p style="font-size:10px;color:var(--text-light);margin-top:5px;">2h atrás</p>
+          </div>
+
+          <div class="card anim-fade-up" style="animation-delay:.65s;cursor:pointer;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px;">
+              <div style="display:flex;gap:9px;align-items:center;">
+                <div class="avatar sm av-olive">TI</div>
+                <div>
+                  <p style="font-size:12.5px;font-weight:700;color:var(--text);">TechIrriga MT</p>
+                  <div class="stars"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="num">4.8</span></div>
+                </div>
+              </div>
+              <span class="badge badge-done">CONCLUÍDO</span>
+            </div>
+            <p style="font-size:11.5px;color:var(--text-sec);line-height:1.4;">Reparo pivô central — Lote 14</p>
+            <p style="font-size:10px;color:var(--text-light);margin-top:5px;">Ontem</p>
+          </div>
+        </div>
+
+        <!-- Bottom Nav -->
+        <div class="bottom-nav">
+          <button class="nav-item active"><span class="icon">🏠</span><span class="text">Início</span><span class="dot"></span></button>
+          <button class="nav-item"><span class="icon">🔍</span><span class="text">Buscar</span></button>
+          <button class="nav-item"><span class="icon">📋</span><span class="text">Serviços</span></button>
+          <button class="nav-item"><span class="icon">💬</span><span class="text">Chat</span></button>
+          <button class="nav-item"><span class="icon">👤</span><span class="text">Perfil</span></button>
+        </div>
+
+      </div>
+    </div>
+    <span class="label">Tela 1 — Home</span>
+  </div>
+
+  <!-- ===== PHONE 2: BUSCA ===== -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+
+        <!-- Header Busca -->
+        <div style="background:var(--card);padding:42px 14px 14px;border-bottom:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:12px;">
+            <span style="font-size:17px;cursor:pointer;">←</span>
+            <h2 style="font-size:17px;font-weight:700;color:var(--text);flex:1;">Encontrar Técnicos</h2>
+            <span style="font-size:17px;">⚡</span>
+          </div>
+          <div style="background:var(--warm-gray);border-radius:12px;padding:11px 13px;display:flex;align-items:center;gap:8px;">
+            <span style="font-size:15px;opacity:.45;">🔍</span>
+            <span style="font-size:12px;color:var(--text-light);">Buscar por serviço ou técnico...</span>
+          </div>
+          <div style="display:flex;gap:7px;margin-top:10px;overflow-x:auto;">
+            <span style="padding:6px 13px;border-radius:20px;font-size:10.5px;font-weight:600;white-space:nowrap;background:var(--primary-dark);color:#fff;">Todos</span>
+            <span style="padding:6px 13px;border-radius:20px;font-size:10.5px;font-weight:600;white-space:nowrap;border:1px solid var(--border);color:var(--text-sec);">Mecânica</span>
+            <span style="padding:6px 13px;border-radius:20px;font-size:10.5px;font-weight:600;white-space:nowrap;border:1px solid var(--border);color:var(--text-sec);">Irrigação</span>
+            <span style="padding:6px 13px;border-radius:20px;font-size:10.5px;font-weight:600;white-space:nowrap;border:1px solid var(--border);color:var(--text-sec);">Peças</span>
+            <span style="padding:6px 13px;border-radius:20px;font-size:10.5px;font-weight:600;white-space:nowrap;border:1px solid var(--border);color:var(--text-sec);">Drones</span>
+          </div>
+        </div>
+
+        <div style="padding:14px;">
+          <p style="margin-bottom:10px;font-size:11.5px;color:var(--text-sec);"><strong style="color:var(--text);">48 técnicos</strong> encontrados na sua região</p>
+
+          <!-- Provider 1 — Premium -->
+          <div class="card anim-slide-in" style="animation-delay:.15s;border:1.5px solid var(--accent);position:relative;overflow:hidden;cursor:pointer;">
+            <div style="position:absolute;top:0;right:0;background:linear-gradient(135deg,var(--accent),var(--accent-light));padding:3px 11px 3px 15px;border-radius:0 12px 0 11px;font-size:8.5px;font-weight:800;color:var(--primary-dark);letter-spacing:.4px;">★ PREMIUM</div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="avatar av-dark">CS</div>
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;gap:5px;margin-bottom:1px;">
+                  <h4 style="font-size:13px;font-weight:700;color:var(--text);">Carlos Souza</h4>
+                  <div style="width:7px;height:7px;border-radius:50%;background:var(--success);"></div>
+                </div>
+                <p style="font-size:10.5px;color:var(--primary);font-weight:600;">Mecânica de Colheitadeiras</p>
+                <p style="font-size:9.5px;color:var(--text-light);margin:2px 0 4px;">John Deere • Case IH</p>
+                <div class="stars"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="num">4.9</span><span style="font-size:9px;color:var(--text-light);margin-left:4px;">(87)</span></div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">
+              <div style="display:flex;gap:14px;">
+                <span style="font-size:10.5px;color:var(--text-sec);">📍 12 km</span>
+                <span style="font-size:10.5px;color:var(--text-sec);font-weight:700;">R$ 180/h</span>
+              </div>
+              <div style="background:var(--primary);color:#fff;padding:6px 14px;border-radius:9px;font-size:10.5px;font-weight:700;cursor:pointer;">Solicitar</div>
+            </div>
+          </div>
+
+          <!-- Provider 2 -->
+          <div class="card anim-slide-in" style="animation-delay:.3s;cursor:pointer;">
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="avatar av-olive">TI</div>
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;gap:5px;margin-bottom:1px;">
+                  <h4 style="font-size:13px;font-weight:700;color:var(--text);">TechIrriga MT</h4>
+                  <div style="width:7px;height:7px;border-radius:50%;background:var(--success);"></div>
+                </div>
+                <p style="font-size:10.5px;color:var(--primary);font-weight:600;">Irrigação e Pivôs Centrais</p>
+                <p style="font-size:9.5px;color:var(--text-light);margin:2px 0 4px;">Valley • Reinke</p>
+                <div class="stars"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="num">4.8</span><span style="font-size:9px;color:var(--text-light);margin-left:4px;">(53)</span></div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">
+              <div style="display:flex;gap:14px;">
+                <span style="font-size:10.5px;color:var(--text-sec);">📍 28 km</span>
+                <span style="font-size:10.5px;color:var(--text-sec);font-weight:700;">R$ 220/h</span>
+              </div>
+              <div style="background:var(--primary);color:#fff;padding:6px 14px;border-radius:9px;font-size:10.5px;font-weight:700;cursor:pointer;">Solicitar</div>
+            </div>
+          </div>
+
+          <!-- Provider 3 — Premium -->
+          <div class="card anim-slide-in" style="animation-delay:.45s;border:1.5px solid var(--accent);position:relative;overflow:hidden;cursor:pointer;">
+            <div style="position:absolute;top:0;right:0;background:linear-gradient(135deg,var(--accent),var(--accent-light));padding:3px 11px 3px 15px;border-radius:0 12px 0 11px;font-size:8.5px;font-weight:800;color:var(--primary-dark);letter-spacing:.4px;">★ PREMIUM</div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="avatar av-gold">RP</div>
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;gap:5px;margin-bottom:1px;">
+                  <h4 style="font-size:13px;font-weight:700;color:var(--text);">Rodrigo Peças</h4>
+                  <div style="width:7px;height:7px;border-radius:50%;background:var(--success);"></div>
+                </div>
+                <p style="font-size:10.5px;color:var(--primary);font-weight:600;">Peças e Componentes</p>
+                <p style="font-size:9.5px;color:var(--text-light);margin:2px 0 4px;">Multimarcas</p>
+                <div class="stars"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="num">4.7</span><span style="font-size:9px;color:var(--text-light);margin-left:4px;">(124)</span></div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">
+              <div style="display:flex;gap:14px;">
+                <span style="font-size:10.5px;color:var(--text-sec);">📍 Em Cuiabá</span>
+                <span style="font-size:10.5px;color:var(--text-sec);font-weight:700;">Sob consulta</span>
+              </div>
+              <div style="background:var(--primary);color:#fff;padding:6px 14px;border-radius:9px;font-size:10.5px;font-weight:700;cursor:pointer;">Solicitar</div>
+            </div>
+          </div>
+
+          <!-- Provider 4 — Indisponível -->
+          <div class="card anim-slide-in" style="animation-delay:.6s;cursor:pointer;opacity:.7;">
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="avatar av-brown">DA</div>
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;gap:5px;margin-bottom:1px;">
+                  <h4 style="font-size:13px;font-weight:700;color:var(--text);">DroneAgro MT</h4>
+                </div>
+                <p style="font-size:10.5px;color:var(--primary);font-weight:600;">Pulverização e Mapeamento</p>
+                <p style="font-size:9.5px;color:var(--text-light);margin:2px 0 4px;">DJI Agras T40</p>
+                <div class="stars"><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="s on">★</span><span class="num">4.6</span><span style="font-size:9px;color:var(--text-light);margin-left:4px;">(31)</span></div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">
+              <div style="display:flex;gap:14px;">
+                <span style="font-size:10.5px;color:var(--text-sec);">📍 35 km</span>
+                <span style="font-size:10.5px;color:var(--text-sec);font-weight:700;">R$ 25/ha</span>
+              </div>
+              <div style="background:var(--text-light);color:#fff;padding:6px 14px;border-radius:9px;font-size:10.5px;font-weight:700;">Indisponível</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <span class="label">Tela 2 — Busca de Técnicos</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ======================================================================== -->
+<!-- SECTION 2: SOLICITAÇÃO + TRACKING                                         -->
+<!-- ======================================================================== -->
+<div class="section-label">
+  <h2>Seção 02</h2>
+  <h3>Solicitação & Acompanhamento</h3>
+  <p>Fluxo de criação de pedido com nível de urgência, tipo de serviço e fotos. Acompanhamento em tempo real com timeline e ETA do técnico.</p>
+</div>
+
+<div class="phone-grid">
+
+  <!-- ===== PHONE 3: SOLICITAÇÃO ===== -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+
+        <div style="background:var(--card);padding:42px 14px 14px;border-bottom:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px;">
+            <span style="font-size:17px;cursor:pointer;">←</span>
+            <h2 style="font-size:17px;font-weight:700;color:var(--text);">Nova Solicitação</h2>
+          </div>
+          <!-- Progress -->
+          <div style="display:flex;gap:5px;">
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;border-radius:2px;background:var(--primary);margin-bottom:5px;"></div>
+              <span style="font-size:8.5px;color:var(--primary);font-weight:600;">Serviço</span>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;border-radius:2px;background:var(--primary);margin-bottom:5px;"></div>
+              <span style="font-size:8.5px;color:var(--primary);font-weight:600;">Detalhes</span>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;border-radius:2px;background:var(--border);margin-bottom:5px;"></div>
+              <span style="font-size:8.5px;color:var(--text-light);font-weight:600;">Fotos</span>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;border-radius:2px;background:var(--border);margin-bottom:5px;"></div>
+              <span style="font-size:8.5px;color:var(--text-light);font-weight:600;">Enviar</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:14px;" class="anim-fade-up">
+
+          <!-- Urgência -->
+          <div style="margin-bottom:18px;">
+            <label style="font-size:12.5px;font-weight:700;color:var(--text);display:block;margin-bottom:9px;">Nível de Urgência</label>
+            <div style="display:flex;gap:7px;">
+              <div style="flex:1;background:#FEE2E2;border-radius:12px;padding:12px 8px;text-align:center;border:2px solid #FECACA;cursor:pointer;">
+                <p style="font-size:12.5px;font-weight:700;color:#DC2626;">🚨 Urgente</p>
+                <p style="margin-top:3px;font-size:9.5px;color:var(--text-sec);">Parada na safra</p>
+              </div>
+              <div style="flex:1;background:var(--card);border-radius:12px;padding:12px 8px;text-align:center;border:2px solid var(--border);cursor:pointer;">
+                <p style="font-size:12.5px;font-weight:700;color:#D97706;">⚡ Rápido</p>
+                <p style="margin-top:3px;font-size:9.5px;color:var(--text-sec);">Em 24-48h</p>
+              </div>
+              <div style="flex:1;background:var(--card);border-radius:12px;padding:12px 8px;text-align:center;border:2px solid var(--border);cursor:pointer;">
+                <p style="font-size:12.5px;font-weight:700;color:#059669;">📅 Agendar</p>
+                <p style="margin-top:3px;font-size:9.5px;color:var(--text-sec);">Próx. dias</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tipo -->
+          <div style="margin-bottom:18px;">
+            <label style="font-size:12.5px;font-weight:700;color:var(--text);display:block;margin-bottom:9px;">Tipo de Serviço</label>
+            <div style="background:var(--card);border-radius:12px;padding:12px 14px;border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+              <div style="display:flex;align-items:center;gap:9px;">
+                <span style="font-size:20px;">⚙️</span>
+                <div>
+                  <p style="font-size:12.5px;font-weight:600;color:var(--text);">Mecânica de Colheitadeira</p>
+                  <p style="font-size:9.5px;color:var(--text-light);margin-top:1px;">48 técnicos disponíveis</p>
+                </div>
+              </div>
+              <span style="color:var(--text-light);font-size:12px;">▼</span>
+            </div>
+          </div>
+
+          <!-- Máquina -->
+          <div style="margin-bottom:18px;">
+            <label style="font-size:12.5px;font-weight:700;color:var(--text);display:block;margin-bottom:9px;">Máquina</label>
+            <div style="background:var(--card);border-radius:12px;padding:12px 14px;border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+              <div>
+                <p style="font-size:12.5px;font-weight:600;color:var(--text);">John Deere S790</p>
+                <p style="font-size:9.5px;color:var(--text-light);margin-top:1px;">2022 • 1.480h • Talhão 7</p>
+              </div>
+              <span style="font-size:10.5px;color:var(--primary);font-weight:600;cursor:pointer;">Trocar</span>
+            </div>
+          </div>
+
+          <!-- Descrição -->
+          <div style="margin-bottom:18px;">
+            <label style="font-size:12.5px;font-weight:700;color:var(--text);display:block;margin-bottom:9px;">Descreva o problema</label>
+            <div style="background:var(--card);border-radius:12px;padding:13px;border:1px solid var(--border);min-height:70px;">
+              <p style="font-size:11.5px;color:var(--text-sec);line-height:1.5;">Colheitadeira parou durante a colheita. Motor faz barulho estranho ao ligar. Já tentamos reiniciar mas o problema persiste...</p>
+            </div>
+          </div>
+
+          <!-- Fotos -->
+          <div style="margin-bottom:20px;">
+            <label style="font-size:12.5px;font-weight:700;color:var(--text);display:block;margin-bottom:9px;">Fotos (opcional)</label>
+            <div style="display:flex;gap:9px;">
+              <div style="width:64px;height:64px;border-radius:11px;background:var(--warm-gray);border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                <span style="font-size:22px;opacity:.35;">📷</span>
+              </div>
+              <div style="width:64px;height:64px;border-radius:11px;background:rgba(45,106,79,.08);display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                <span style="font-size:10px;color:var(--primary);font-weight:600;">+ foto</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <button class="btn-primary">
+            Encontrar Técnicos Disponíveis →
+            <small>3 técnicos online na sua região</small>
+          </button>
+        </div>
+      </div>
+    </div>
+    <span class="label">Tela 3 — Nova Solicitação</span>
+  </div>
+
+  <!-- ===== PHONE 4: TRACKING ===== -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+
+        <!-- Header -->
+        <div style="background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:42px 14px 18px;">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px;">
+            <span style="font-size:17px;color:#fff;cursor:pointer;">←</span>
+            <h2 style="font-size:17px;font-weight:700;color:#fff;">Acompanhamento</h2>
+          </div>
+          <!-- Provider card -->
+          <div style="background:rgba(255,255,255,.11);border-radius:14px;padding:14px;">
+            <div style="display:flex;gap:10px;align-items:center;">
+              <div class="avatar lg av-dark">CS</div>
+              <div style="flex:1;">
+                <h4 style="font-size:14px;font-weight:700;color:#fff;">Carlos Souza</h4>
+                <p style="font-size:10.5px;color:rgba(255,255,255,.6);margin:2px 0;">Mecânica de Colheitadeiras</p>
+                <div class="stars"><span class="s on" style="color:var(--accent-light);">★</span><span class="s on" style="color:var(--accent-light);">★</span><span class="s on" style="color:var(--accent-light);">★</span><span class="s on" style="color:var(--accent-light);">★</span><span class="s on" style="color:var(--accent-light);">★</span><span class="num" style="color:rgba(255,255,255,.6);">4.9</span></div>
+              </div>
+              <div style="display:flex;gap:7px;">
+                <button class="icon-btn">📞</button>
+                <button class="icon-btn">💬</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETA Card -->
+        <div style="padding:0 14px;margin-top:-12px;position:relative;z-index:10;">
+          <div style="background:var(--card);border-radius:14px;padding:14px;border:1px solid var(--border);box-shadow:0 4px 16px rgba(0,0,0,.05);">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <p style="font-size:10px;color:var(--text-light);font-weight:500;letter-spacing:.3px;">CHEGADA ESTIMADA</p>
+                <p style="margin-top:3px;font-size:26px;font-weight:800;color:var(--primary);">42 min</p>
+              </div>
+              <div style="text-align:right;">
+                <p style="font-size:10px;color:var(--text-light);font-weight:500;letter-spacing:.3px;">DISTÂNCIA</p>
+                <p style="margin-top:3px;font-size:18px;font-weight:700;color:var(--text);">28 km</p>
+              </div>
+            </div>
+            <div style="margin-top:12px;height:5px;border-radius:3px;background:var(--warm-gray);overflow:hidden;">
+              <div style="width:45%;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--primary),var(--primary-light));animation:progressBar 1.5s ease-out;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div style="padding:18px 14px;">
+          <h3 style="margin-bottom:14px;font-size:14px;font-weight:700;color:var(--text);">Status do Serviço</h3>
+
+          <!-- Step 1 — Done -->
+          <div class="anim-fade-up" style="animation-delay:.1s;display:flex;gap:12px;">
+            <div style="display:flex;flex-direction:column;align-items:center;width:30px;flex-shrink:0;">
+              <div style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;background:#D1FAE5;">📤</div>
+              <div style="width:2px;height:22px;background:var(--success);margin:3px 0;"></div>
+            </div>
+            <div style="padding-top:4px;padding-bottom:12px;">
+              <p style="font-size:12.5px;font-weight:500;color:var(--text);">Solicitação enviada</p>
+              <p style="font-size:9.5px;color:var(--text-light);margin-top:1px;">14:32</p>
+            </div>
+          </div>
+
+          <!-- Step 2 — Done -->
+          <div class="anim-fade-up" style="animation-delay:.25s;display:flex;gap:12px;">
+            <div style="display:flex;flex-direction:column;align-items:center;width:30px;flex-shrink:0;">
+              <div style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;background:#D1FAE5;">✅</div>
+              <div style="width:2px;height:22px;background:var(--success);margin:3px 0;"></div>
+            </div>
+            <div style="padding-top:4px;padding-bottom:12px;">
+              <p style="font-size:12.5px;font-weight:500;color:var(--text);">Carlos aceitou o serviço</p>
+              <p style="font-size:9.5px;color:var(--text-light);margin-top:1px;">14:35</p>
+            </div>
+          </div>
+
+          <!-- Step 3 — Active -->
+          <div class="anim-fade-up" style="animation-delay:.4s;display:flex;gap:12px;">
+            <div style="display:flex;flex-direction:column;align-items:center;width:30px;flex-shrink:0;">
+              <div style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;background:linear-gradient(135deg,var(--primary),var(--primary-light));animation:pulse 2s infinite;">🚗</div>
+              <div style="width:2px;height:22px;background:var(--border);margin:3px 0;"></div>
+            </div>
+            <div style="padding-top:4px;padding-bottom:12px;">
+              <p style="font-size:12.5px;font-weight:700;color:var(--text);">A caminho da fazenda</p>
+              <p style="font-size:9.5px;color:var(--text-light);margin-top:1px;">14:38</p>
+            </div>
+          </div>
+
+          <!-- Step 4 — Pending -->
+          <div class="anim-fade-up" style="animation-delay:.55s;display:flex;gap:12px;">
+            <div style="display:flex;flex-direction:column;align-items:center;width:30px;flex-shrink:0;">
+              <div style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;background:var(--warm-gray);">📍</div>
+              <div style="width:2px;height:22px;background:var(--border);margin:3px 0;"></div>
+            </div>
+            <div style="padding-top:4px;padding-bottom:12px;">
+              <p style="font-size:12.5px;font-weight:500;color:var(--text-light);">Chegada estimada</p>
+              <p style="font-size:9.5px;color:var(--text-light);margin-top:1px;">~15:20</p>
+            </div>
+          </div>
+
+          <!-- Step 5 — Pending -->
+          <div class="anim-fade-up" style="animation-delay:.7s;display:flex;gap:12px;">
+            <div style="display:flex;flex-direction:column;align-items:center;width:30px;flex-shrink:0;">
+              <div style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;background:var(--warm-gray);">🔧</div>
+              <div style="width:2px;height:22px;background:var(--border);margin:3px 0;"></div>
+            </div>
+            <div style="padding-top:4px;padding-bottom:12px;">
+              <p style="font-size:12.5px;font-weight:500;color:var(--text-light);">Serviço em andamento</p>
+            </div>
+          </div>
+
+          <!-- Step 6 — Pending -->
+          <div class="anim-fade-up" style="animation-delay:.85s;display:flex;gap:12px;">
+            <div style="display:flex;flex-direction:column;align-items:center;width:30px;flex-shrink:0;">
+              <div style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;background:var(--warm-gray);">⭐</div>
+            </div>
+            <div style="padding-top:4px;">
+              <p style="font-size:12.5px;font-weight:500;color:var(--text-light);">Conclusão e avaliação</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Details -->
+        <div style="padding:0 14px 20px;">
+          <div class="card">
+            <p style="margin-bottom:7px;font-size:11.5px;font-weight:700;color:var(--text);">Detalhes do Serviço</p>
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:10.5px;color:var(--text-sec);">Máquina</span>
+              <span style="font-size:10.5px;font-weight:600;color:var(--text);">John Deere S790</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:10.5px;color:var(--text-sec);">Valor estimado</span>
+              <span style="font-size:10.5px;font-weight:600;color:var(--text);">R$ 850,00</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;">
+              <span style="font-size:10.5px;color:var(--text-sec);">Código</span>
+              <span style="font-size:10.5px;font-weight:600;color:var(--primary);">#AGR-2026-0847</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <span class="label">Tela 4 — Acompanhamento</span>
+  </div>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<div style="text-align:center;padding:40px 20px 48px;position:relative;z-index:2;">
+  <div style="width:60px;height:2px;background:rgba(255,255,255,.1);margin:0 auto 20px;border-radius:1px;"></div>
+  <p style="font-size:11px;color:rgba(255,255,255,.15);line-height:1.7;">
+    Mockup conceitual • AgroCuiabá Connect<br>
+    Marketplace B2B para serviços agrícolas em Mato Grosso<br>
+    Cores: Verde escuro (campo/confiança) + Dourado (safra/premium) + Terrosos (rusticidade)
+  </p>
+</div>
+
+</body>
+</html>
